@@ -6,46 +6,61 @@ package Figury;
 //        pole trójkąta wzorem herona
 //        boki rombu pitagorasem
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Figury {
 
+    private int bok1;
+    private int bok2;
+    private int bok3;
+    private double pole;
+    private int obwod;
+
+    public Figury(int bok1, int bok2, int bok3)
+    {
+        //trojkat
+        this.bok1 = bok1;
+        this.bok2 = bok2;
+        this.bok3 = bok3;
+
+        if ((bok1 + bok2 > bok3)||(bok2 + bok3 > bok1)||(bok1 + bok3 > bok2))
+        {
+            System.out.println("To jest trojkat.");
+            System.out.println("Obwod trojkata: " + obwodTrojkata() + "\nPole trojkata: " + poleTrojkata());
+        }
+        else
+            System.out.println("Te odcinki nie utworza trojkata.");
+    }
+
+    public Figury(int bok1, int bok2)
+    {
+        //romb
+        this.bok1 = bok1;
+        this.bok2 = bok2;
+        System.out.println("to jest romb.");
+    }
+
+    int obwodTrojkata()
+    {
+        obwod = bok1 + bok2 + bok3;
+        return obwod;
+    }
+
+    double poleTrojkata()
+    {
+        double p;
+        p = obwod / 2;
+        pole = Math.sqrt(p*(p-bok1)*(p-bok2)*(p-bok3));
+
+        return pole;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Trojkat trojkat = new Trojkat(2,4,6);
-
-        System.out.println("pole trojkata: " + trojkat.poleTrojkata());
-        System.out.println("obwod trojkata: " + trojkat.obwodTrojkata());
+        Figury figura = new Figury(31,31,13);
 
     }
 
-    static class Trojkat
-    {
-        private int bok1;
-        private int bok2;
-        private int bok3;
-        private int pole;
-        private int obwod;
-
-        public Trojkat(int bok1, int bok2, int bok3)
-        {
-            this.bok1 = bok1;
-            this.bok2 = bok2;
-            this.bok3 = bok3;
-        }
-
-        int obwodTrojkata()
-        {
-            obwod = bok1 + bok2 + bok3;
-            return obwod;
-        }
-
-        int poleTrojkata()
-        {
-            pole = (bok1 * bok2 * bok3) / 2;
-
-            return pole;
-        }
     }
-}
