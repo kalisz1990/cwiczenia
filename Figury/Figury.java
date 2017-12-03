@@ -52,7 +52,6 @@ public class Figury {
     double poleRombu()
     {
         pole = (bok1*bok2)/2;
-
         return pole;
     }
 
@@ -74,15 +73,13 @@ public class Figury {
         double p;
         p = obwodTrojkata() / 2;
         pole = Math.sqrt(p*(p-bok1)*(p-bok2)*(p-bok3));
-
         return pole;
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
+    public static void main(String[] args)
+    {
         Figury figura = new Figury(8,6);
 
     }
-
-    }
+}
