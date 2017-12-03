@@ -72,7 +72,7 @@ public class Figury {
     double poleTrojkata()
     {
         double p;
-        p = obwod / 2;
+        p = obwodTrojkata() / 2;
         pole = Math.sqrt(p*(p-bok1)*(p-bok2)*(p-bok3));
 
         return pole;
