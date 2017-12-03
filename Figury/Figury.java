@@ -39,26 +39,27 @@ public class Figury {
         this.bok1 = bok1;
         this.bok2 = bok2;
         System.out.println("to jest romb.");
-        System.out.println("Obwod trojkata: " + obwodRombu() + "\nPole trojkata: " + poleRombu());
+        System.out.println("Obwod rombu: " + obwodRombu() + "\nPole rombu: " + poleRombu());
         System.out.println("Bok rombu: "+ bokRombu());
 
     }
     double obwodRombu()
     {
-        obwod = bok1 + bok2;
+        obwod = bokRombu()*4;
         return obwod;
     }
 
     double poleRombu()
     {
-        pole=(bok1*bok2)/2;
+        pole = (bok1*bok2)/2;
+
         return pole;
     }
 
     double bokRombu()
     {
         double bokRobu;
-        bokRobu = Math.sqrt(Math.pow(bok1/2,2) + Math.pow(bok2/2,2));
+        bokRobu = Math.sqrt(Math.pow((bok1/2),2) + Math.pow((bok2/2),2));
         return bokRobu;
     }
 
