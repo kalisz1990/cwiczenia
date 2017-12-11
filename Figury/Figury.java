@@ -5,85 +5,91 @@ package Figury;
 //        musisz obliczyć pole i obwód figur na postawie parametrów wejściowych
 //        pole trójkąta wzorem herona
 //        boki rombu pitagorasem
+//        uzyc interfejsów
 
 import java.sql.SQLOutput;
 
-public class Figury {
+interface Trojkat
+{
+    double poleTrojkata();
+    double obwodTrojkata();
+}
+interface Romb
+{
+    double obwodRombu();
+    double poleRombu();
+}
+
+public class Figury implements Trojkat, Romb {
 
     double bok1;
     double bok2;
     double bok3;
     double przekatna1;
     double przekatna2;
-    double pole;
-    double obwod;
+    double poleTrojkata;
+    double obwodTrojkata;
+    double obwodRombu;
+    double poleRombu;
 
-    public Figury (int bok1, int bok2, int bok3){
+    public Figury(int bok1, int bok2, int bok3) {
+        //Trojkat
         this.bok1 = bok1;
         this.bok2 = bok2;
         this.bok3 = bok3;
+
+        if ((Math.abs(bok2 - bok3) < bok1) && (bok1 < bok2 + bok3)) {
+            System.out.println("To jest trojkat.");
+        } else
+            System.out.println("Te odcinki nie utworza trojkata.");
     }
 
-    public Figury (int przekatna1, int przekatna2) {
+    public Figury(int przekatna1, int przekatna2) {
+        //Romb
+
         this.przekatna1 = przekatna1;
         this.przekatna2 = przekatna2;
     }
 
-    public static void main (String [] args)
+    public static void main(String[] args) {
 
-    {
-        Trojkat trojkat = new Trojkat(3,4,5);
-        System.out.println(trojkat.obwod());
-        System.out.println(trojkat.pole());
+        Figury trojkat = new Figury(3, 4, 5);
+        System.out.println("Pole trojkata: " + trojkat.poleTrojkata());
+        System.out.println("Obwod trojkata: " + trojkat.obwodTrojkata());
+
         System.out.println();
 
-        Romb romb = new Romb(3,4);
-        System.out.println(romb.pole());
-        System.out.println(romb.bokRombu());
-    }
-}
+        Figury romb = new Figury(3, 4);
+        System.out.println("Pole rombu: " + romb.poleRombu());
+        System.out.println("Obwod rombu: " + romb.obwodRombu());
 
-class Trojkat extends Figury {
-
-    public Trojkat(int bok1, int bok2, int bok3) {
-        super(bok1, bok2, bok3);
-
-        if ((Math.abs(bok2-bok3)<bok1)&&(bok1<bok2+bok3))
-        {
-            System.out.println("To jest trojkat.");
-        }
-        else
-            System.out.println("Te odcinki nie utworza trojkata.");
     }
 
-    double obwod() {
-        obwod = bok1 + bok2 + bok3;
-        return obwod;
-    }
-
-    double pole() {
+    @Override
+    public double poleTrojkata() {
         double p;
-        p = obwod() / 2;
-        pole = Math.sqrt(p * (p - bok1) * (p - bok2) * (p - bok3));
-        return pole;
-    }
-}
-
-class Romb extends Figury {
-
-    public Romb(int przekatna1, int przekatna2) {
-        super(przekatna1, przekatna2);
-    }
-    double pole()
-    {
-        pole = (przekatna1 * przekatna2) / 2;
-        return pole;
+        p = obwodTrojkata() / 2;
+        poleTrojkata = Math.sqrt(p * (p - bok1) * (p - bok2) * (p - bok3));
+        return poleTrojkata;
     }
 
-    double bokRombu ()
-    {
-        double bokRobu;
-        bokRobu = Math.sqrt(Math.pow((bok1 / 2), 2) + Math.pow((bok2 / 2), 2));
-        return bokRobu;
+    @Override
+    public double obwodTrojkata() {
+        obwodTrojkata = bok1 + bok2 + bok3;
+        return obwodTrojkata;
     }
+    @Override
+    public double obwodRombu() {
+        double bokRombu;
+        bokRombu = Math.sqrt(Math.pow((przekatna1 / 2), 2) + Math.pow((przekatna2 / 2), 2));
+        obwodRombu = bokRombu*4;
+        return obwodRombu;
+    }
+
+     @Override
+    public double poleRombu() {
+        poleRombu = (przekatna1 * przekatna2) / 2;
+        return poleRombu;
+    }
+
 }
