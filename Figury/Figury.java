@@ -51,20 +51,6 @@ public class Figury implements Trojkat, Romb {
         this.przekatna2 = przekatna2;
     }
 
-    public static void main(String[] args) {
-
-        Trojkat trojkat = new Figury(3, 4, 5);
-        System.out.println("Pole trojkata: " + trojkat.poleTrojkata());
-        System.out.println("Obwod trojkata: " + trojkat.obwodTrojkata());
-
-        System.out.println();
-
-        Romb romb = new Figury(3, 4);
-        System.out.println("Pole rombu: " + romb.poleRombu());
-        System.out.println("Obwod rombu: " + romb.obwodRombu());
-
-    }
-
     @Override
     public double poleTrojkata() {
         //wzor obliczania pola trojkata metoda Herona
@@ -85,7 +71,6 @@ public class Figury implements Trojkat, Romb {
         double bokRombu;
         //wzor na obliczenie dlugosci boku rombu na podstawie przekątnych
         bokRombu = Math.sqrt(Math.pow((przekatna1 / 2), 2) + Math.pow((przekatna2 / 2), 2));
-
         obwodRombu = bokRombu*4;
         return obwodRombu;
     }
@@ -94,5 +79,20 @@ public class Figury implements Trojkat, Romb {
     public double poleRombu() {
         poleRombu = (przekatna1 * przekatna2) / 2;
         return poleRombu;
+    }
+
+
+    public static void main(String[] args) {
+
+        Trojkat trojkat = new Figury(3, 4, 5);
+        System.out.println("Pole trojkata: " + trojkat.poleTrojkata());
+        System.out.println("Obwod trojkata: " + trojkat.obwodTrojkata());
+
+        System.out.println();
+
+        Romb romb = new Figury(3, 4);
+        System.out.println("Pole rombu: " + romb.poleRombu());
+        System.out.println("Obwod rombu: " + romb.obwodRombu());
+
     }
 }
