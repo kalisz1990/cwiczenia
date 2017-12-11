@@ -46,20 +46,19 @@ public class Figury implements Trojkat, Romb {
 
     public Figury(int przekatna1, int przekatna2) {
         //Romb
-
         this.przekatna1 = przekatna1;
         this.przekatna2 = przekatna2;
     }
 
     public static void main(String[] args) {
 
-        Figury trojkat = new Figury(3, 4, 5);
+        Trojkat trojkat = new Figury(3, 4, 5);
         System.out.println("Pole trojkata: " + trojkat.poleTrojkata());
         System.out.println("Obwod trojkata: " + trojkat.obwodTrojkata());
 
         System.out.println();
 
-        Figury romb = new Figury(3, 4);
+        Romb romb = new Figury(3, 4);
         System.out.println("Pole rombu: " + romb.poleRombu());
         System.out.println("Obwod rombu: " + romb.obwodRombu());
 
