@@ -38,6 +38,7 @@ public class Figury implements Trojkat, Romb {
         this.bok2 = bok2;
         this.bok3 = bok3;
 
+        //sprawdzenie czy z podanych odcinków powstanie trojkat
         if ((Math.abs(bok2 - bok3) < bok1) && (bok1 < bok2 + bok3)) {
             System.out.println("To jest trojkat.");
         } else
@@ -66,6 +67,7 @@ public class Figury implements Trojkat, Romb {
 
     @Override
     public double poleTrojkata() {
+        //wzor obliczania pola trojkata metoda Herona
         double p;
         p = obwodTrojkata() / 2;
         poleTrojkata = Math.sqrt(p * (p - bok1) * (p - bok2) * (p - bok3));
@@ -77,10 +79,13 @@ public class Figury implements Trojkat, Romb {
         obwodTrojkata = bok1 + bok2 + bok3;
         return obwodTrojkata;
     }
+
     @Override
     public double obwodRombu() {
         double bokRombu;
+        //wzor na obliczenie dlugosci boku rombu na podstawie przekątnych
         bokRombu = Math.sqrt(Math.pow((przekatna1 / 2), 2) + Math.pow((przekatna2 / 2), 2));
+
         obwodRombu = bokRombu*4;
         return obwodRombu;
     }
@@ -90,5 +95,4 @@ public class Figury implements Trojkat, Romb {
         poleRombu = (przekatna1 * przekatna2) / 2;
         return poleRombu;
     }
-
 }
