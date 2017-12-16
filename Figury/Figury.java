@@ -7,9 +7,11 @@ package Figury;
 //        boki rombu pitagorasem
 //        uzyc interfejsów
 
-import java.sql.SQLOutput;
 
-interface Figura{
+import java.util.Scanner;
+
+interface Figura
+{
     double pole();
     double obwod();
 }
@@ -29,27 +31,26 @@ interface Figura{
             this.bok3 = bok3;
 
             //sprawdzenie czy z podanych odcinków powstanie trojkat
-            if ((Math.abs(bok2 - bok3) < bok1) && (bok1 < bok2 + bok3))
-                System.out.println("To jest trojkat.");
-
-            else
+            if ((Math.abs(bok2 - bok3) < bok1) && (bok1 < bok2 + bok3)) {
+                System.out.println("Z podanych wartosci powstanie trojkat.");
+            } else
                 System.out.println("Te odcinki nie utworza trojkata.");
-            }
-
+        }
             @Override
             public double pole() {
-                //wzor obliczania pola trojkata metoda Herona
+             //wzor obliczania pola trojkata metoda Herona
                 double p;
                 p = obwod() / 2;
                 poleTrojkata = Math.sqrt(p * (p - bok1) * (p - bok2) * (p - bok3));
-                return poleTrojkata;
+                    return poleTrojkata;
             }
+
             @Override
-            public double obwod() {
-                obwodTrojkata = bok1 + bok2 + bok3;
-                return obwodTrojkata;
+                public double obwod() {
+                    obwodTrojkata = bok1 + bok2 + bok3;
+                    return obwodTrojkata;
+                }
             }
-        }
 
         class Romb implements Figura {
 
@@ -74,27 +75,41 @@ interface Figura{
             }
 
             @Override
-            public double pole() {
+            public double pole()
+            {
                 poleRombu = (przekatna1 * przekatna2) / 2;
                 return poleRombu;
             }
         }
 
-        public class Figury
-        {
+        public class Figury {
 
-    public static void main(String[] args) {
+            public static void main(String[] args) {
 
-        Figura trojkat = new Trojkat(3, 4, 5);
-        System.out.println("Pole trojkata: " + trojkat.pole());
-        System.out.println("Obwod trojkata: " + trojkat.obwod());
+                int bok1 = 0;
+                int bok2 = 0;
+                int bok3 = 0;
+                int przekatna1 = 0;
+                int przekatna2 = 0;
 
-        System.out.println();
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Podaj 3 wartosci dla trojkata: ");
+                bok1 = scanner.nextInt();
+                bok2 = scanner.nextInt();
+                bok3 = scanner.nextInt();
 
-        Figura romb = new Romb(6,14);
-        System.out.println("Pole rombu: " + romb.pole());
-        System.out.println("Obwod rombu: " + romb.obwod());
+                Figura trojkat = new Trojkat(bok1, bok2, bok3);
+                System.out.println("pole trojkata: " + trojkat.pole());
+                System.out.println("obwod trojkata: " + trojkat.obwod());
+                System.out.println();
 
-    }
-}
+                System.out.println("Podaj 2 wartosci dla rombu: ");
+                przekatna1 = scanner.nextInt();
+                przekatna2 = scanner.nextInt();
+
+                Figura romb = new Romb(przekatna1, przekatna2);
+                System.out.println("pole rombu: " + romb.pole());
+                System.out.println("obwod rombu: "  + romb.obwod());
+            }
+        }
 
