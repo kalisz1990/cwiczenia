@@ -10,13 +10,16 @@ package Figury;
 
 import java.util.Scanner;
 
-interface Figura
-{
+interface Figura {
     double pole();
     double obwod();
+
+}
+interface CzyTrojkat{
+    boolean sprawdzenieTrojkata();
 }
 
-    class Trojkat implements Figura {
+    class Trojkat implements Figura, CzyTrojkat {
 
         double bok1;
         double bok2;
@@ -30,11 +33,20 @@ interface Figura
             this.bok2 = bok2;
             this.bok3 = bok3;
 
+        }
+        @Override
+        public boolean sprawdzenieTrojkata()
+        {
             //sprawdzenie czy z podanych odcinków powstanie trojkat
             if ((Math.abs(bok2 - bok3) < bok1) && (bok1 < bok2 + bok3)) {
                 System.out.println("Z podanych wartosci powstanie trojkat.");
-            } else
+            return true;
+            }
+            else
+            {
                 System.out.println("Te odcinki nie utworza trojkata.");
+            return false;
+            }
         }
             @Override
             public double pole() {
@@ -93,17 +105,20 @@ interface Figura
                 int przekatna2 = 0;
 
                 Scanner scanner = new Scanner(System.in);
-                System.out.println("Podaj 3 wartosci dla trojkata: ");
+                System.out.println("Podaj 3 dlugosci boków trojkata: ");
                 bok1 = scanner.nextInt();
                 bok2 = scanner.nextInt();
                 bok3 = scanner.nextInt();
 
+                CzyTrojkat sprawdzanie = new Trojkat(bok1, bok2, bok3);
                 Figura trojkat = new Trojkat(bok1, bok2, bok3);
-                System.out.println("pole trojkata: " + trojkat.pole());
-                System.out.println("obwod trojkata: " + trojkat.obwod());
+                if (sprawdzanie.sprawdzenieTrojkata()) {
+                    System.out.println("pole trojkata: " + trojkat.pole());
+                    System.out.println("obwod trojkata: " + trojkat.obwod());
+                }
                 System.out.println();
 
-                System.out.println("Podaj 2 wartosci dla rombu: ");
+                System.out.println("Podaj 2 dlugosci przekątnych dla rombu: ");
                 przekatna1 = scanner.nextInt();
                 przekatna2 = scanner.nextInt();
 
